@@ -1,0 +1,39 @@
+
+# docker-compose.yml
+version: '3.8' # Use a modern version
+
+services:
+  # Define the backend service
+  backend:
+    build: ./Mission04-Backend # Tell Compose where to find the backend's Dockerfile
+    container_name: amara_backend # A friendly name for the container
+    restart: unless-stopped # Policy for restarting if it stops unexpectedly
+    environment:
+      # This tells Compose to look for GOOGLE_API_KEY in a file named .env
+      # in the *same directory* as this docker-compose.yml file
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+    networks:
+      - amara_network # Connect this service to our custom network
+    # If you want to access the backend DIRECTLY from your host machine (e.g., for API testing),
+    # you can uncomment the ports section. But it's not needed for the frontend to talk to it.
+    # ports:
+    #   - "3001:3001" # Map host port 3001 to container port 3001
+
+  # Define the frontend service
+  frontend:
+    build: ./Mission04-Frontend # Tell Compose where to find the frontend's Dockerfile
+    container_name: amara_frontend
+    restart: unless-stopped
+    ports:
+      # Map port 5173 on your host machine to port 80 inside the frontend container (where Nginx listens)
+      # You can change 5173 to another port if you prefer (e.g., 8080)
+      - "5173:80"
+    networks:
+      - amara_network # Connect this service to the same network
+    depends_on:
+      - backend # Tells Compose to start the backend *before* the frontend (good practice)
+
+# Define the network that allows containers to talk to each other by service name ('backend')
+networks:
+  amara_network:
+    driver: bridge

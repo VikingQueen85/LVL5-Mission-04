@@ -4,7 +4,7 @@ import MessageList from './components/MessageList';
 import MessageInput from './components/MessageInput';
 import './App.css'; // We'll create this file
 
-const BACKEND_URL = 'http://localhost:3001/api/chat';
+const BACKEND_URL = '/api/chat';
 
 function App() {
   const [messages, setMessages] = useState([
