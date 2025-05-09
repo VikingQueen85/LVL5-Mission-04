@@ -6,6 +6,7 @@ const morgan = require("morgan")
 // --- Application Modules ---
 const notFoundHandler = require("./middleware/notFoundHandler")
 const globalErrorHandler = require("./middleware/globalErrorHandler")
+const chatRoutes = require("./routes/chatRoutes")
 
 // --- Initialise Express ---
 const app = express()
@@ -22,12 +23,12 @@ app.get("/", (req, res) => {
 })
 
 // --- Mount Routes ---
-// mount routes here
+app.use("/api/v1/chat", chatRoutes)
 
-// // --- Not Found Handler ---
-// app.all("*", notFoundHandler)
+// --- Not Found Handler ---
+app.use(notFoundHandler)
 
-// // --- Global Error Handler ---
-// app.use(globalErrorHandler)
+// --- Global Error Handler ---
+app.use(globalErrorHandler)
 
 module.exports = app
