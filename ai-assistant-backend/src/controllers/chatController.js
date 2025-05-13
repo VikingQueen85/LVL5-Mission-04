@@ -15,8 +15,6 @@ const chatController = async (req, res) => {
     // Pass the sessionId and message to geminiService
     const response = await geminiService(sessionId, message)
 
-    console.log("Chat Controller Response: ", response)
-
     return res.status(200).json({
       status: "success",
       sessionId: response.sessionId,

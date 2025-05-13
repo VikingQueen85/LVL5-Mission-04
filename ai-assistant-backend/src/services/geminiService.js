@@ -63,8 +63,7 @@ const geminiService = async (sessionId = null, userMessage) => {
     // Return response data
     return {
       sessionId: chatSessionId,
-      text:
-        aiResponse.text.trim().replace(/\n+/g, " ") || "No response received",
+      text: aiResponse.text.trim() || "No response received",
       isNewSession,
     }
   } catch (error) {
