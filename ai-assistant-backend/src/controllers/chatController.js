@@ -1,24 +1,34 @@
-const { geminiService } = require("../services/geminiService")
+import { geminiService } from "../services/geminiService.js"
 
 const chatController = async (req, res) => {
-  const { message } = req.body
+  const { sessionId, message } = req.body
 
-  console.log("Chat Controller: ", message)
+  // Validate the message input
+  if (typeof message !== "string" || !message.trim()) {
+    return res.status(400).json({
+      status: "fail",
+      message: "Message cannot be empty",
+    })
+  }
 
   try {
-    const response = await geminiService(message)
+    // Pass the sessionId and message to geminiService
+    const response = await geminiService(sessionId, message)
 
-    res.status(200).json({
-      message: response,
+    console.log("Chat Controller Response: ", response)
+
+    return res.status(200).json({
       status: "success",
+      sessionId: response.sessionId,
+      text: response.text,
+      isNewSession: response.isNewSession,
     })
   } catch (error) {
-    console.error("Error in chatController: ", error)
-    res.status(500).json({
-      message: "Internal Server Error",
+    return res.status(500).json({
       status: "error",
+      message: error.message ?? "An unexpected error occurred",
     })
   }
 }
 
-module.exports = { chatController }
+export { chatController }

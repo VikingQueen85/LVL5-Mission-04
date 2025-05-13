@@ -11,7 +11,6 @@ if (!config.API_KEY) {
 }
 
 // --- Port ---
-
 const PORT = config.PORT // Use centralised configuration
 
 app.listen(PORT, () => {
