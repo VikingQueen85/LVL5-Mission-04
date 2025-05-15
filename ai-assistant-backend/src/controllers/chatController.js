@@ -1,4 +1,4 @@
-import { geminiService } from "../services/geminiService.js"
+const { geminiService } = require("../services/geminiService.js")
 
 const chatController = async (req, res) => {
   const { sessionId, message } = req.body
@@ -29,4 +29,4 @@ const chatController = async (req, res) => {
   }
 }
 
-export { chatController }
+module.exports = { chatController }
