@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import MessageList from './components/MessageList';
 import MessageInput from './components/MessageInput';
-import './App.css'; // We'll create this file
+import './App.css';
 
 const BACKEND_URL = '/api/chat';
 
@@ -62,7 +62,7 @@ function App() {
       <div className="chat-window">
           <MessageList messages={messages} />
           {error && <div className="error-message">Error: {error}</div>}
-          {isLoading && <div className="loading-indicator">Tina is thinking...</div>}
+          {isLoading && <div className="loading-indicator">Amara is thinking...</div>}
       </div>
       <MessageInput onSendMessage={handleSendMessage} isLoading={isLoading} />
     </div>
