@@ -1,25 +1,28 @@
 services:
   backend:
-    build:
-      context: ./ai-assistant-backend
-      dockerfile: Dockerfile
+    # build:
+    #   context: ./ai-assistant-backend
+    #   dockerfile: Dockerfile
+    image: sherelynn/ai-assistant-backend:v1.0.0 # Use the built and pushed image from Docker Hub
     container_name: ai-assistant-backend
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3000:3000" # Host-Port:Container-Port
     environment:
+      # These environment variables are still needed at runtime
       - NODE_ENV=production
-      - API_KEY=${API_KEY}
-      - PORT=3000
+      - API_KEY=${API_KEY} # This
+      - PORT=3000 # This is the port INSIDE the container the app listens on
     networks:
       - app-network
 
   frontend:
-    build:
-      context: ./ai-assistant-frontend
-      dockerfile: Dockerfile
-      args:
-        - VITE_API_URL=http://localhost:3000/api/v1/chat
+    # build:
+    #   context: ./ai-assistant-frontend
+    #   dockerfile: Dockerfile
+    #   args: # Build args are baked into the image. Not needed when pulling
+    #     - VITE_API_URL=http://localhost:3000/api/v1/chat
+    image: sherelynn/ai-assistant-frontend:v1.0.0 # Use the built and pushed image from Docker Hub
     container_name: ai-assistant-frontend
     restart: unless-stopped
     ports:
