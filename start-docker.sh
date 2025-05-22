@@ -8,9 +8,13 @@ if [ ! -f .env ]; then
   exit 1
 fi
 
-# Build and start the containers
+# Pull latest images
+echo "Pulling latest Docker images..."
+docker-compose pull
+
+# Start the containers
 echo "Building and starting Docker containers..."
-docker-compose up --build $@
+docker-compose up $@
 
 echo "Application is running:"
 echo "- Frontend: http://localhost:80"
