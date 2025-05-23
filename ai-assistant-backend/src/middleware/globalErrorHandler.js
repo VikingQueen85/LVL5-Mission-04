@@ -14,15 +14,20 @@ const globalErrorHandler = (err, req, res, next) => {
   // Log the error stack trace to the console (essential for debugging)
   console.error("GLOBAL ERROR HANDLER: ", err)
 
-  // Send detailed error response back to the client
-  res.status(statusCode).json({
+  // Create a response object
+  const errorResponse = {
     status,
     message: err.message || "Something went wrong", // Use error message if available or default
+  }
 
-    // Development only: include full error object and stack
-    error: err,
-    stack: err.stack,
-  })
+  // Development only: include full error object and stack
+  if (process.env.NODE_ENV !== "production") {
+    errorResponse.error = err
+    errorResponse.stack = err.stack
+  }
+
+  // Send detailed error response back to the client
+  res.status(statusCode).json(errorResponse)
 }
 
 module.exports = globalErrorHandler
