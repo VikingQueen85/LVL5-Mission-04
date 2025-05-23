@@ -94,7 +94,7 @@ To run in detached mode:
 
 ```
 
-./start-docker.sh
+./start-docker.sh -d
 
 ```
 
