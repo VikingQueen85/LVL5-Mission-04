@@ -55,8 +55,8 @@ const geminiService = async (sessionId = null, userMessage) => {
 
     // Implement session timeout / cleanup
     setTimeout(() => {
-      if (activeChat.has(sessionId)) {
-        activeChat.delete(sessionId) // Remove the session from the in-memory store if inactive
+      if (activeChat.has(chatSessionId)) {
+        activeChat.delete(chatSessionId) // Remove the session from the in-memory store if inactive
       }
     }, SESSION_TIMEOUT_MS)
 
