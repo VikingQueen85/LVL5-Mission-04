@@ -1,0 +1,33 @@
+:root {
+  --color-border: #0056b3;
+  --background-color-primary: #efebe4;
+  --background-color-secondary: #007bff;
+  --background-color-warning: #d32f2f;
+  --button-hover: #1b7adf;
+  --chat-background-ai: #cbe7f1;
+  --chat-background-user: #f9d4b0;
+  --color-text: #f8f9fa;
+  --color-timestamp: #888;
+  --color-shadow: #00000033;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 100%;
+  letter-spacing: 0.8px;
+  line-height: 1.5;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--background-color-primary);
+}
