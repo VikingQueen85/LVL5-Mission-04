@@ -3,7 +3,7 @@ services:
     # build:
     #   context: ./ai-assistant-backend
     #   dockerfile: Dockerfile
-    image: sherelynn/ai-assistant-backend:v1.0.0 # Use the built and pushed image from Docker Hub
+    image: sherelynn/ai-assistant-backend:v1.0.1 # Use the built and pushed image from Docker Hub
     container_name: ai-assistant-backend
     restart: unless-stopped
     ports:

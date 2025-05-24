@@ -1,5 +1,6 @@
 const { GoogleGenAI } = require("@google/genai")
 const { config } = require("../config/index")
+const { v4: uuidv4 } = require("uuid")
 
 // --- Prompts Imports ---
 const {
@@ -31,7 +32,7 @@ const createNewChatSession = () => {
 
 // --- Gemini Service ---
 const geminiService = async (sessionId = null, userMessage) => {
-  const chatSessionId = sessionId || `session_${Date.now()}_${Math.random()}` // Generate a session ID if not provided (for new chat sessions)
+  const chatSessionId = sessionId || uuidv4() // Generate UUID if no session provided
   let isNewSession = false
 
   try {
