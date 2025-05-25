@@ -1,0 +1,24 @@
+
+services:
+  backend:
+    build: ./Mission04-Backend
+    container_name: amara_backend
+    restart: unless-stopped
+    environment:
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+    networks:
+      - amara_network
+  frontend:
+    build: ./Mission04-Frontend
+    container_name: amara_frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    networks:
+      - amara_network
+    depends_on:
+      - backend
+
+networks:
+  amara_network:
+    driver: bridge

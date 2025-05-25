@@ -1,0 +1,132 @@
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .app-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    padding: 15px;
+    margin: 0;
+    background-color: #e0f2f1;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.4em;
+  }
+  
+  .chat-window {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .message-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+  }
+  
+  .message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 75%;
+    word-wrap: break-word;
+    line-height: 1.4;
+  }
+  
+  .message.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .message.model {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+  }
+  
+  .message-sender {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.9em;
+  }
+  
+  .message p {
+      margin: 0;
+  }
+  
+  
+  .message-input-form {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    background-color: #f8f9fa;
+  }
+  
+  .message-input-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 1em;
+  }
+  
+  .message-input-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+  }
+  
+  .message-input-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .message-input-form button:disabled {
+      background-color: #a0c7e4;
+      cursor: not-allowed;
+  }
+  
+  .loading-indicator, .error-message {
+      text-align: center;
+      padding: 10px;
+      color: #666;
+      font-style: italic;
+  }
+  .error-message {
+      color: #dc3545; 
+      font-weight: bold;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      border-radius: 4px;
+      margin: 5px 0;
+  }
