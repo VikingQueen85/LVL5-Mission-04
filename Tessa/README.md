@@ -88,11 +88,5 @@ CORS Configuration:
 
 The backend (Mission04-Backend/config/express.js) includes CORS middleware. For development within Docker, cors({ origin: '*' }) was used to allow requests from any origin. This is necessary because the browser's origin (http://localhost:5173) is different from the internal Docker network IP that the backend sees the request coming from.
 
-Important Note: For production deployments, the origin should be strictly limited to your frontend's deployed domain(s) for security reasons (e.g., origin: 'https://your-frontend-app.com').
-
-Git History Cleaning for Public Repositories:
-
-To ensure no sensitive information (like credentials.json), git filter-repo was used.
-
 Contributors
 Tessa - VikingQueen85
