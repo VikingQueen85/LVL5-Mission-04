@@ -94,19 +94,5 @@ Git History Cleaning for Public Repositories:
 
 To ensure no sensitive information (like credentials.json), git filter-repo was used.
 
-The process involved:
-
-Installing git-filter-repo via pip.
-
-Running git filter-repo --path <file/folder> --invert-paths --force to rewrite history.
-
-Cleaning up Git's internal references (git reflog expire --expire=now --all and git gc --prune=now).
-
-Adding the removed files/folders to .gitignore (e.g., Clark/, Sherelynn/, Clark/server/credentials.json) to prevent future accidental commits.
-
-Force pushing the rewritten history (git push -u origin main --force).
-
-This ensures the repository is clean and secure for public sharing.
-
 Contributors
 Tessa - VikingQueen85
